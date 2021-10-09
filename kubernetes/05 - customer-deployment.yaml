@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: cs3219
+  name: customer-service-deployment
+  labels:
+    app: customer-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customer-service
+  template:
+    metadata:
+      name: customer-service
+      labels:
+        app: customer-service
+    spec:
+      containers:
+      - name: customer-service
+        image: cs3219/customer-service:1.0.0
+        ports:
+        - containerPort: 8080
